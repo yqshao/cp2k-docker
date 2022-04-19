@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         ver: ["v8.1.0", "v9.1.0"]
-        arch: ["psmp", "psmp-cuda"]
+        arch: ["psmp"]
         exclude:
           - ver: "v8.1.0" # Only build cuda with 9.1
             arch: "psmp-cuda"
