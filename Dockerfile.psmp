@@ -5,7 +5,7 @@ RUN apt-get update -qq && apt-get install -qq --no-install-recommends \
     gfortran                                                          \
     mpich                                                             \
     libmpich-dev                                                      \
-   && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 # Install requirements for the toolchain.
 WORKDIR /opt/cp2k-toolchain
@@ -16,8 +16,9 @@ RUN ./install_requirements.sh ubuntu:20.04
 COPY ./tools/toolchain/scripts ./scripts/
 COPY ./tools/toolchain/install_cp2k_toolchain.sh .
 RUN ./install_cp2k_toolchain.sh \
-    --install-all \
-    --mpi-mode=mpich && rm -rf ./build
+    --generic \
+    --mpi-mode=mpich \
+    && rm -rf ./build
 
 # Install CP2K using local.ssmp.
 WORKDIR /opt/cp2k

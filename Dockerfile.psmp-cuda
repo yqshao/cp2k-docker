@@ -20,7 +20,7 @@ RUN ./install_requirements.sh ubuntu:20.04
 COPY ./tools/toolchain/scripts ./scripts/
 COPY ./tools/toolchain/install_cp2k_toolchain.sh .
 RUN ./install_cp2k_toolchain.sh \
-    --install-all \
+    --generic \
     --mpi-mode=mpich \
     --enable-cuda=yes \
     --gpu-ver=V100 \
