@@ -15,9 +15,8 @@ RUN ./install_requirements.sh ubuntu:20.04
 # Install the toolchain.
 COPY ./tools/toolchain/scripts ./scripts/
 COPY ./tools/toolchain/install_cp2k_toolchain.sh .
-RUN sed -i 's/-mtune=generic/-march=x86-64 -mtune=generic/g' scripts/generate_arch_files.sh \
+RUN sed -i 's/-march=native -mtune=native/-march=x86-64 -mtune=generic/g' scripts/generate_arch_files.sh \
     && ./install_cp2k_toolchain.sh \
-    --generic \
     --mpi-mode=mpich \
     && rm -rf ./build
 
