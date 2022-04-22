@@ -9,10 +9,7 @@ jobs:
     strategy:
       matrix:
         ver: ["v8.1.0", "v9.1.0"]
-        arch: ["psmp"]
-        exclude:
-          - ver: "v8.1.0" # Only build cuda with 9.1
-            arch: "psmp-cuda"
+        build: ["x86-64-v3-psmp", "x86-64-psmp"]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main repo
@@ -36,5 +33,5 @@ jobs:
         with:
           context: cp2k
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}:${{ matrix.ver }}-${{ matrix.arch }}
-          file: Dockerfile.${{ matrix.arch }}
+          tags: ${{ secrets.DOCKERHUB_REPO }}:${{ matrix.ver }}-${{ matrix.build }}
+          file: Dockerfile.${{ matrix.build }}
