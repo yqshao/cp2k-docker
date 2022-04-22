@@ -18,9 +18,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: cp2k/cp2k
+          ref: ${{ matrix.ver }}
           submodules: recursive
           path: cp2k
-          ref: ${{ matrix.version }}
       - name: Copy the entrypoint script
         run: cp scripts/prod_entrypoint.sh cp2k/tools/prod_entrypoint.sh
       - name: Login to Docker Hub
